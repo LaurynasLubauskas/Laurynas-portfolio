@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atelier Brume — Artisan Bakery (Concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f7f0e4;--crust:#b5652b;--dough:#ead9bd;--ink:#2a1d14;--muted:#7a6553;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.serif{font-family:Fraunces,Georgia,serif}
+.badge{position:fixed;right:16px;bottom:16px;z-index:50;background:var(--ink);color:var(--cream);font-size:12px;padding:8px 14px;border-radius:100px}
+.badge b{font-weight:600}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px clamp(20px,5vw,64px)}
+.logo{font-family:Fraunces,serif;font-weight:700;font-size:24px;letter-spacing:-.02em}
+.logo i{font-style:italic;color:var(--crust)}
+nav ul{display:flex;gap:28px;list-style:none;font-size:15px;font-weight:500}
+nav ul a{position:relative}nav ul a::after{content:"";position:absolute;left:0;bottom:-4px;height:1.5px;width:0;background:var(--crust);transition:width .4s var(--ease)}nav ul a:hover::after{width:100%}
+.btn{display:inline-block;background:var(--ink);color:var(--cream);padding:14px 26px;border-radius:100px;font-weight:500;font-size:15px;transition:background .3s,transform .4s var(--ease)}
+.btn:hover{background:var(--crust);transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}.btn.line:hover{background:var(--ink);color:var(--cream)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding:30px clamp(20px,5vw,64px) 80px}
+.hero small{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--crust);margin-bottom:22px}
+.hero h1{font-family:Fraunces,serif;font-weight:600;font-size:clamp(46px,7vw,104px);line-height:.95;letter-spacing:-.035em}
+.hero h1 em{font-style:italic;color:var(--crust);font-weight:400}
+.hero p{font-size:18px;line-height:1.55;color:var(--muted);max-width:440px;margin:26px 0 34px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.loaf{position:relative;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e8b77d,#c27a3d 45%,#8a4a1f 80%);box-shadow:0 40px 80px -30px rgba(90,45,15,.5),inset -20px -30px 60px rgba(60,25,5,.35);animation:rise 6s ease-in-out infinite alternate}
+.loaf::before,.loaf::after{content:"";position:absolute;left:22%;right:22%;height:6%;border-radius:50%;background:rgba(255,235,200,.55);filter:blur(1px)}
+.loaf::before{top:38%;transform:rotate(-18deg)}.loaf::after{top:56%;transform:rotate(-18deg)}
+.flour{position:absolute;inset:-6%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.0) 55%,rgba(255,255,255,.35) 56%,transparent 70%);opacity:.6}
+.stamp{position:absolute;right:2%;top:4%;width:120px;height:120px;border-radius:50%;background:var(--ink);color:var(--cream);display:grid;place-items:center;text-align:center;font-family:Fraunces,serif;font-size:14px;line-height:1.2;transform:rotate(12deg)}
+@keyframes rise{to{transform:translateY(-12px) scale(1.02)}}
+.strip{background:var(--ink);color:var(--cream);overflow:hidden;padding:18px 0}
+.strip div{display:flex;gap:40px;width:max-content;animation:mq 30s linear infinite;font-family:Fraunces,serif;font-size:26px;font-style:italic}
+.strip span::after{content:"✺";margin-left:40px;color:var(--crust);font-style:normal}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:100px clamp(20px,5vw,64px)}
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:50px}
+.sec-h h2{font-family:Fraunces,serif;font-weight:600;font-size:clamp(36px,4.6vw,64px);letter-spacing:-.03em;line-height:1}
+.sec-h p{color:var(--muted);max-width:360px;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.item{background:#fff;border-radius:24px;padding:22px;transition:transform .5s var(--ease),box-shadow .5s}
+.item:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(90,45,15,.35)}
+.item .pic{aspect-ratio:4/3;border-radius:16px;margin-bottom:18px}
+.p1{background:radial-gradient(ellipse 45% 35% at 50% 55%,#c98443,#8f4d1d 70%,transparent 72%),var(--dough)}
+.p2{background:radial-gradient(ellipse 50% 22% at 50% 55%,#e2a65e,#a5612a 70%,transparent 72%),#efe2cc}
+.p3{background:radial-gradient(circle at 35% 50%,#d79a5a 0 18%,transparent 19%),radial-gradient(circle at 62% 48%,#c98443 0 20%,transparent 21%),#f1e4d1}
+.item h3{font-family:Fraunces,serif;font-size:24px;display:flex;justify-content:space-between}
+.item h3 span{font-family:Inter;font-size:16px;font-weight:600;color:var(--crust)}
+.item p{color:var(--muted);font-size:15px;line-height:1.5;margin-top:8px}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;background:var(--dough);border-radius:40px;margin:0 clamp(12px,2vw,24px)}
+.story h2{font-family:Fraunces,serif;font-size:clamp(34px,4vw,56px);line-height:1.05;letter-spacing:-.03em}
+.story h2 em{color:var(--crust)}
+.story p{font-size:17px;line-height:1.65;color:var(--muted);margin-top:18px}
+.hours{background:var(--cream);border-radius:24px;padding:30px}
+.hours div{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px dashed #cdb89a;font-weight:500}
+.hours div:last-child{border:0}
+footer{padding:60px clamp(20px,5vw,64px) 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;color:var(--muted);font-size:14px}
+.fu{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}.fu.in{opacity:1;transform:none}
+@media(max-width:820px){nav ul{display:none}.hero,.story{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.stamp{width:90px;height:90px;font-size:12px}.sec-h{flex-direction:column;align-items:start}.story{padding:50px 24px}}
+</style>
+</head>
+<body>
+<a class="badge" href="../../index.html#work">Concept by <b>Lubauskas Studio</b> ↗</a>
+<nav><a href="#" class="logo">Atelier <i>Brume</i></a><ul><li><a href="#bakes">Bakes</a></li><li><a href="#story">Our story</a></li><li><a href="#visit">Visit</a></li></ul><a href="#visit" class="btn">Order ahead</a></nav>
+<header class="hero">
+  <div><small>Sourdough · Luxembourg City</small><h1>Bread worth <em>waking up</em> for.</h1><p>Slow-fermented sourdough, buttery viennoiserie and seasonal pastries — baked every morning from local flour.</p><div class="ctas"><a class="btn" href="#bakes">See today's bakes</a><a class="btn line" href="#visit">Find us</a></div></div>
+  <div style="position:relative"><div class="loaf"><div class="flour"></div></div><div class="stamp">Baked<br>since<br>5:00</div></div>
+</header>
+<div class="strip"><div><span>Country sourdough</span><span>Croissant au beurre</span><span>Kanelbulle</span><span>Rye &amp; seeds</span><span>Pain au chocolat</span><span>Country sourdough</span><span>Croissant au beurre</span><span>Kanelbulle</span><span>Rye &amp; seeds</span><span>Pain au chocolat</span></div></div>
+<section id="bakes">
+  <div class="sec-h fu"><h2>Today's bakes</h2><p>Out of the oven at 7:00. When it's gone, it's gone — come early for the good stuff.</p></div>
+  <div class="grid">
+    <div class="item fu"><div class="pic p1"></div><h3>Country loaf <span>€6.50</span></h3><p>48-hour ferment, crackling crust, open crumb.</p></div>
+    <div class="item fu" style="transition-delay:.1s"><div class="pic p2"></div><h3>Croissant <span>€2.40</span></h3><p>Laminated with Luxembourg butter, 27 layers.</p></div>
+    <div class="item fu" style="transition-delay:.2s"><div class="pic p3"></div><h3>Cardamom bun <span>€3.20</span></h3><p>Twisted, glazed, finished with pearl sugar.</p></div>
+  </div>
+</section>
+<section id="story" class="story fu">
+  <div><h2>Small batches. <em>No shortcuts.</em></h2><p>Every loaf starts the day before with a starter we've fed for years. We mill nothing fancy — just good grain, water, salt and time.</p></div>
+  <div class="hours" id="visit"><div><span>Tue – Fri</span><span>7:00 – 18:00</span></div><div><span>Saturday</span><span>7:00 – 15:00</span></div><div><span>Sunday</span><span>8:00 – 13:00</span></div><div><span>Monday</span><span>Closed</span></div></div>
+</section>
+<footer><span>© Atelier Brume — a fictional bakery</span><span>Concept website designed &amp; coded by Lubauskas Studio</span></footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.fu').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

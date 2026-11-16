@@ -1,0 +1,31 @@
+/* Lubauskas Studio — navigation & mobile menu */
+/* ---------- NAV (floating glass pill, Ekon-style links) ---------- */
+nav{position:fixed;left:50%;top:16px;z-index:60;display:flex;align-items:center;gap:6px;padding:6px;border-radius:100px;background:rgba(22,22,23,.6);backdrop-filter:saturate(180%) blur(22px);-webkit-backdrop-filter:saturate(180%) blur(22px);border:1px solid rgba(255,255,255,.09);box-shadow:0 10px 40px -10px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06);opacity:0;transform:translate(-50%,-30px);transition:opacity .8s var(--ease),transform .8s var(--ease),background .5s,padding .5s var(--ease),top .5s var(--ease)}
+body.ready nav{opacity:1;transform:translate(-50%,0)}
+nav.scrolled{background:rgba(22,22,23,.82);top:12px}
+nav.hide{transform:translate(-50%,-140%)!important}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px;letter-spacing:-.02em;padding:0 14px 0 4px}
+.logo span{color:var(--muted)}
+.mark{width:32px;height:32px;border-radius:50%;background:linear-gradient(160deg,#f5f5f7,#8e8e93);color:#000;display:grid;place-items:center;font-weight:700;font-size:14px;letter-spacing:-.04em;transition:transform .6s var(--ease)}
+.logo:hover .mark{transform:rotate(-360deg)}
+.nav-links{position:relative;display:flex;list-style:none;padding:0 4px;border-left:1px solid rgba(255,255,255,.08);border-right:1px solid rgba(255,255,255,.08)}
+.nav-links a{position:relative;z-index:1;display:block;padding:9px 15px;font-size:14px;font-weight:500;color:#a1a1a6;transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:#f5f5f7}
+.nav-pill{position:absolute;top:50%;left:0;height:34px;border-radius:100px;background:rgba(255,255,255,.1);transform:translateY(-50%);opacity:0;transition:left .45s var(--ease),width .45s var(--ease),opacity .3s;pointer-events:none}
+.nav-status{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#d2d2d7;padding:0 14px 0 12px;white-space:nowrap}
+.pulse{position:relative;width:8px;height:8px;border-radius:50%;background:#30d158}
+.pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:#30d158;animation:pulse 2s ease-out infinite}
+
+.nav-progress{position:absolute;left:22px;right:22px;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);transform-origin:0 50%;transform:scaleX(0)}
+.menu-btn{all:unset;display:none;cursor:pointer;width:40px;height:40px;border-radius:50%;background:#f5f5f7;place-items:center;align-content:center;gap:5px;flex:none}
+.menu-btn i{display:block;width:16px;height:1.5px;background:#000;transition:transform .4s var(--ease)}
+body.menu-open .menu-btn i:first-child{transform:translateY(3.25px) rotate(45deg)}body.menu-open .menu-btn i:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+/* mobile overlay menu */
+.mmenu{position:fixed;inset:0;z-index:55;background:rgba(0,0,0,.86);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;justify-content:center;padding:100px 28px 40px;opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s}
+body.menu-open .mmenu{opacity:1;visibility:visible}
+.mmenu a{font-size:44px;font-weight:600;letter-spacing:-.04em;padding:8px 0;color:#f5f5f7;opacity:0;transform:translateY(24px);transition:opacity .6s var(--ease),transform .6s var(--ease);transition-delay:calc(var(--i)*60ms + 100ms)}
+.mmenu a small{font-size:14px;color:var(--muted);font-weight:500;margin-right:14px;vertical-align:middle}
+body.menu-open .mmenu a{opacity:1;transform:none}
+.mmenu .mfoot{margin-top:40px;color:var(--muted);font-size:14px;opacity:0;transition:opacity .6s .4s}
+body.menu-open .mmenu .mfoot{opacity:1}
+

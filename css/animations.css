@@ -1,0 +1,47 @@
+/* Lubauskas Studio — animations, transitions & keyframes */
+/* ---------- PRELOADER: letters + column wipe (Ekon) + counter ---------- */
+#loader{position:fixed;inset:0;z-index:100;pointer-events:none}
+#loader .panels{position:absolute;inset:0;display:flex}
+#loader .panel{flex:1;height:100%;background:#000;margin-right:-1px;transform-origin:50% 0;transition:transform 1.05s var(--ease)}
+#loader.out .panel{transform:scaleY(0)}
+#loader .panel:nth-child(2){transition-delay:.07s}#loader .panel:nth-child(3){transition-delay:.14s}#loader .panel:nth-child(4){transition-delay:.21s}#loader .panel:nth-child(5){transition-delay:.28s}
+#loader .word{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;overflow:hidden;font-weight:600;font-size:clamp(20px,2.4vw,30px);letter-spacing:-.02em;transition:opacity .4s}
+#loader .word span{display:inline-block;transform:translateY(110%);transition:transform .7s var(--ease)}
+#loader.in .word span{transform:none}
+#loader .num{position:absolute;right:var(--pad);bottom:var(--pad);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;transition:opacity .4s}
+#loader .bar{position:absolute;left:0;bottom:0;height:2px;background:#f5f5f7;width:0}
+#loader.out .word,#loader.out .num,#loader.out .bar{opacity:0}
+
+/* ---------- ROLLING TEXT ---------- */
+.roll{display:inline-flex;overflow:hidden;position:relative;line-height:1.25}
+.roll>span{display:block;transition:transform .5s var(--ease)}
+.roll>span+span{position:absolute;left:0;top:0;transform:translateY(105%)}
+a:hover .roll>span:first-child{transform:translateY(-105%)}
+a:hover .roll>span+span{transform:none}
+
+.btn{display:inline-flex;align-items:center;gap:10px;background:#f5f5f7;color:#000;font-size:15px;font-weight:500;padding:13px 24px;border-radius:100px;position:relative;overflow:hidden;isolation:isolate;white-space:nowrap;line-height:1;transition:translate .4s var(--ease)}
+.btn::before{content:"";position:absolute;left:50%;top:100%;width:140%;aspect-ratio:1;background:#fff;border-radius:50%;transform:translate(-50%,0) scale(0);transition:transform .6s var(--ease);z-index:-1}
+.btn:hover::before{transform:translate(-50%,-60%) scale(1)}
+.btn .arr{transition:transform .5s var(--ease)}
+.btn:hover .arr{transform:translateX(4px) rotate(-45deg)}
+.btn.ghost{background:transparent;color:#f5f5f7;border:1px solid #424245}
+.btn.ghost::before{background:#f5f5f7}.btn.ghost:hover{color:#000}
+
+/* ---------- ANIMATION PRIMITIVES ---------- */
+.bw .w{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(14px);transition:opacity .9s var(--ease),filter .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i)*55ms + var(--d,0ms))}
+.bw.in .w{opacity:1;filter:blur(0);transform:none}
+.fu{opacity:0;transform:translateY(var(--y,30px));transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0ms)}
+.fu.in{opacity:1;transform:none}
+
+/* ---------- KEYFRAMES ---------- */
+@keyframes pulse{to{transform:scale(2.8);opacity:0}}
+@keyframes halo{to{opacity:.55;transform:translateX(-46%) scale(1.08)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .fu,.bw .w,.ticker li{opacity:1!important;transform:none!important;filter:none!important}
+  .hero h1 .line>span,.giant span{transform:none!important}
+  .vision .w{color:var(--fg)}
+}

@@ -170,9 +170,6 @@ footer{padding:90px var(--pad) 0;overflow:hidden}
 
 @media (max-width:1100px){.code{display:none}}
 @media (max-width:860px){
-  nav{width:calc(100% - 28px);justify-content:space-between}
-  .nav-links,.nav-status{display:none}
-  .menu-btn{display:grid}
   .hero{min-height:600px}
   .hero h1 .line{display:block}
   .hero h1 sup{vertical-align:1.6em}

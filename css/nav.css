@@ -5,7 +5,7 @@ body.ready nav{opacity:1;transform:translate(-50%,0)}
 nav.scrolled{background:rgba(22,22,23,.82);top:12px}
 nav.hide{transform:translate(-50%,-140%)!important}
 .logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px;letter-spacing:-.02em;padding:0 14px 0 4px}
-.logo span{color:var(--muted)}
+.logo .name{color:var(--fg)}.logo .name span{color:var(--muted)}
 .mark{width:32px;height:32px;border-radius:50%;background:linear-gradient(160deg,#f5f5f7,#8e8e93);color:#000;display:grid;place-items:center;font-weight:700;font-size:14px;letter-spacing:-.04em;transition:transform .6s var(--ease)}
 .logo:hover .mark{transform:rotate(-360deg)}
 .nav-links{position:relative;display:flex;list-style:none;padding:0 4px;border-left:1px solid rgba(255,255,255,.08);border-right:1px solid rgba(255,255,255,.08)}
@@ -29,3 +29,10 @@ body.menu-open .mmenu a{opacity:1;transform:none}
 .mmenu .mfoot{margin-top:40px;color:var(--muted);font-size:14px;opacity:0;transition:opacity .6s .4s}
 body.menu-open .mmenu .mfoot{opacity:1}
 
+
+/* ---------- MOBILE NAV (kept here so it loads after the desktop nav rules) ---------- */
+@media (max-width:860px){
+  nav{width:calc(100% - 28px);justify-content:space-between;padding:6px 6px 6px 8px}
+  .nav-links,.nav-status{display:none}
+  .menu-btn{display:grid}
+}

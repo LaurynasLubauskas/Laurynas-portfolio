@@ -208,3 +208,5 @@ footer{padding:90px var(--pad) 0;overflow:hidden}
 .card::after{background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.75))}
 @media (max-width:860px){.card{width:84vw}}
 .cta .mail{transition:color .3s}.cta .mail:hover{color:#f5f5f7}
+.card.concept{cursor:inherit}
+.card.concept:hover .cap{transform:none}
